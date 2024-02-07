@@ -1,0 +1,11 @@
+@for (node of graph?.nodes; track node.id) {
+  <app-node
+    [node]="node"
+    [style.top.px]="node.y ?? 0"
+    [style.left.px]="node.x ?? 0"
+    (nodeChanged)="renderEdges()" />
+}
+
+<canvas #canvasElement></canvas>
+
+<pre>{{graph?.nodes | json}}</pre>
