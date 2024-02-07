@@ -10,12 +10,12 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build Angular app
+    - name: Setup Node
       uses: actions/setup-node@v3
       with:
         node-version: 18.x
@@ -27,10 +27,5 @@ jobs:
       with:
         name: github-pages
         path: ./dist/graph-viewer/browser
-
-  deploy_pages:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy GitHub Pages site
-        uses: actions/deploy-pages@v4.0.4
-          
+    - name: Deploy GitHub Pages site
+      uses: actions/deploy-pages@v4.0.4          
