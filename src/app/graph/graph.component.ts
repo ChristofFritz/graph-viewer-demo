@@ -1,5 +1,5 @@
-import {AfterViewInit, Component, ElementRef, inject, OnInit, ViewChild} from '@angular/core';
-import {Graph, Node, Edge} from '../types/types';
+import {AfterViewInit, Component, ElementRef, inject, Input, OnInit, ViewChild} from '@angular/core';
+import {Graph} from '../types/types';
 import {NodeComponent} from '../node/node.component';
 import {JsonPipe} from '@angular/common';
 
@@ -18,25 +18,11 @@ export class GraphComponent implements OnInit, AfterViewInit {
 
   elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
 
-  public graph?: Graph;
+  @Input() graph?: Graph;
 
   private canvasInitialized = false;
 
-  ngOnInit() {
-    this.graph = new Graph({
-      nodes: [
-        new Node({id: 1, x: 200, y: 0}),
-        new Node({id: 2, x: 100, y: 100}),
-        new Node({id: 3, x: 300, y: 100}),
-        new Node({id: 4, x: 300, y: 200}),
-      ],
-      edges: [
-        new Edge({source_id: 1, destination_id: 2}),
-        new Edge({source_id: 1, destination_id: 3}),
-        new Edge({source_id: 3, destination_id: 4}),
-      ]
-    })
-  }
+  ngOnInit() {}
 
   ngAfterViewInit() {
     const graphHeight = this.elementRef.nativeElement.offsetHeight;

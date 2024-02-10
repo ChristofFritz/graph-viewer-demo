@@ -1,1 +1,4 @@
-<app-graph />
+@if (graph) {
+  <app-graph [graph]="graph" />
+  <app-graph-rank-viewer [graph]="graph" />
+}
